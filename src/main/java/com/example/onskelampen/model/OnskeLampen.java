@@ -69,4 +69,5 @@ public class OnskeLampen {
     public void setLink(String link) {
         this.link = link;
     }
+
 }

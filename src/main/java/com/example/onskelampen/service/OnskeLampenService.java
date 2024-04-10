@@ -5,6 +5,8 @@ import com.example.onskelampen.repository.OnskeLampenRepository;
 import com.example.onskelampen.repository.OnskeLampenRepository_DB;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OnskeLampenService {
 
@@ -23,3 +25,4 @@ public class OnskeLampenService {
         onskeLampenRepository.createWish(onske);
     }
 }
+
