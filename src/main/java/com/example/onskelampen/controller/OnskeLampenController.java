@@ -26,7 +26,7 @@ public class OnskeLampenController {
 
     @GetMapping("/showList")
     public String showList(Model model) {
-        model.addAttribute("ønskeliste", onskeLampenService.showList());
+        model.addAttribute("wishList", onskeLampenService.showList());
         return "showList-index";
     }
 
