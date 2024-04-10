@@ -19,7 +19,7 @@ public class OnskeLampenController {
         this.onskeLampenService = onskeLampenService;
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public String landingPage() {
         return "landingPage-index";
     }
