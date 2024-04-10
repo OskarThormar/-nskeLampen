@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new Wish</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<h1>Add New Wish</h1>
+<form action="http://localhost:8080/add" method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="price">Description:</label><br>
+    <input type="text" id="price" name="price"><br>
+    <label for="amount">Amount:</label><br>
+    <input type="text" id="amount" name="amount"><br>
+    </select><br>
+</form>
+<form action="http://localhost:8080">
+    <input type="submit" value="Tilbage">
+</form>
+</body>
+</html>
