@@ -1,0 +1,35 @@
+style {
+    overflow: initial;
+    display: block;
+}
+ body, html {
+     position: relative;
+     margin: 0px;
+     height: 100%;
+     width: 100%;
+     font-family: GothamRounded, Arial, sans-serif;
+     background-color: rgb(248, 251, 255);
+ }
+
+ * {
+     box-sizing: border-box;
+     scrollbar-width: none;
+     font-family: GothamRounded, Poppins, Arial, sans-serif !important;
+ }
+
+
+body {
+    display: block;
+    margin: 8px;
+}
+
+ :root {
+     --main-color: #2C622C;
+     --link-color: #234923;
+     --text-color: #222;
+     --hover-color: #234923;
+     --decline-color: #f6f6f6;
+     --decline-text: #000;
+     --decline-hover: #dddddd;
+     --footer-background: #f6f6f6;
+ }

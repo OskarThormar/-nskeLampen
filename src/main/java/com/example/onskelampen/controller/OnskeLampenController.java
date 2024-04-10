@@ -3,6 +3,10 @@ package com.example.onskelampen.controller;
 import com.example.onskelampen.model.OnskeLampen;
 import com.example.onskelampen.service.OnskeLampenService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -14,4 +18,29 @@ public class OnskeLampenController {
     public OnskeLampenController(OnskeLampenService onskeLampenService) {
         this.onskeLampenService = onskeLampenService;
     }
+
+    @GetMapping("")
+    public String landingPage() {
+        return "landingPage-index";
+    }
+
+    @GetMapping("/showList")
+    public String showList(Model model) {
+        model.addAttribute("ønskeliste", onskeLampenService.showList());
+        return "showList-index";
+    }
+
+    @GetMapping("/createWish")
+    public String addWish(Model model){
+        OnskeLampen newWish = new OnskeLampen();
+        model.addAttribute("wish", newWish);
+        return "wish-add";
+    }
+
+    @PostMapping("/createWish")
+    public String createWish(@ModelAttribute OnskeLampen onske){
+        onskeLampenService.createWish(onske);
+        return "redirect:/";
+    }
+
 }
