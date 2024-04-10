@@ -9,6 +9,10 @@ public class OnskeLampen {
     private int amount;
     private String link;
 
+    public OnskeLampen() {
+
+    }
+
     public OnskeLampen(int id, String name, String description, double price, int amount, String link) {
         this.id = id;
         this.name = name;

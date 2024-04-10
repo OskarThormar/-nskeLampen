@@ -1,5 +1,6 @@
 package com.example.onskelampen.service;
 
+import com.example.onskelampen.model.OnskeLampen;
 import com.example.onskelampen.repository.OnskeLampenRepository;
 import com.example.onskelampen.repository.OnskeLampenRepository_DB;
 import org.springframework.stereotype.Service;
@@ -13,5 +14,12 @@ public class OnskeLampenService {
     public OnskeLampenService(OnskeLampenRepository onskeLampenRepository, OnskeLampenRepository_DB onskeLampenRepository_db) {
         this.onskeLampenRepository = onskeLampenRepository;
         this.onskeLampenRepository_db = onskeLampenRepository_db;
+    }
+
+    public List<OnskeLampen> showList(){
+        return onskeLampenRepository.showOnsker();
+    }
+    public void createWish(OnskeLampen onske){
+        onskeLampenRepository.createWish(onske);
     }
 }
