@@ -1,5 +1,7 @@
 package com.example.onskelampen.model;
 
+import java.util.Objects;
+
 public class OnskeLampen {
 
     private int id;
@@ -70,4 +72,15 @@ public class OnskeLampen {
         this.link = link;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OnskeLampen that)) return false;
+        return getId() == that.getId() && Double.compare(getPrice(), that.getPrice()) == 0 && getAmount() == that.getAmount() && Objects.equals(getName(), that.getName()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getLink(), that.getLink());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getDescription(), getPrice(), getAmount(), getLink());
+    }
 }
