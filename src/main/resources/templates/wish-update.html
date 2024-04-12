@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Wish</title>
+  <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+
+<h1>Update Wish</h1>
+
+<form action="/updateWish" method="post" th:object="${wish}">
+  <input type="hidden" th:field="*{id}" /> <!-- Skjult input til id -->
+
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" th:value="*{name}" /><br> <!-- Input til navn med værdi fra ønsket -->
+
+  <label for="description">Description:</label><br>
+  <input type="text" id="description" name="description" th:value="*{description}" /><br> <!-- Input til beskrivelse med værdi fra ønsket -->
+
+  <label for="price">Price:</label><br>
+  <input type="text" id="price" name="price" th:value="*{price}" /><br> <!-- Input til pris med værdi fra ønsket -->
+
+  <label for="amount">Amount:</label><br>
+  <input type="text" id="amount" name="amount" th:value="*{amount}" /><br> <!-- Input til mængde med værdi fra ønsket -->
+
+  <label for="link">Link:</label><br>
+  <input type="text" id="link" name="link" th:value="*{link}" /><br> <!-- Input til sælger med værdi fra ønsket -->
+
+  <input type="submit" value="Update" />
+</form>
+
+</body>
+</html>
