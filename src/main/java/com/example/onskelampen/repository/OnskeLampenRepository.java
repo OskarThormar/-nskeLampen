@@ -30,4 +30,35 @@ public class OnskeLampenRepository {
     public List<OnskeLampen> showOnsker() {
         return onskeLampensList;
     }
+    public OnskeLampen deleteWish(int id) {
+        OnskeLampen removeWish = null;
+        for (OnskeLampen oenske : onskeLampensList) {
+            if (oenske.getId() == id)
+                removeWish = oenske;
+        }
+        if (removeWish != null)
+            onskeLampensList.remove(removeWish);
+        return removeWish;
+    }
+    public void updatOenske(OnskeLampen oenskeUpdate) {
+        int index = 0;
+        for (int i=0; i<onskeLampensList.size(); i++) {
+            if (onskeLampensList.get(i).getId() == oenskeUpdate.getId())
+                index = i;
+        }
+        onskeLampensList.set(index, oenskeUpdate);
+    }
+    public OnskeLampen getWishById(int id) {
+        OnskeLampen oenskeFind = null;
+        for (OnskeLampen oenske : onskeLampensList) {
+            if (oenske.getId() == id)
+                oenskeFind = oenske;
+
+
+        }
+        if (oenskeFind != null)
+            return oenskeFind;
+        else
+            return null;
+    }
 }

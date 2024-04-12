@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add new Wish</title>
+    <title>Add Wish</title>
     <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-<h1>Add New Wish</h1>
-<form action="http://localhost:8080/add" method="post">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name"><br>
-    <label for="price">Description:</label><br>
-    <input type="text" id="price" name="price"><br>
-    <label for="amount">Amount:</label><br>
-    <input type="text" id="amount" name="amount"><br>
-    </select><br>
-</form>
-<form action="http://localhost:8080">
-    <input type="submit" value="Tilbage">
-</form>
+<div class="container">
+    <header class="header">
+        <h1>Add a New Wish</h1>
+    </header>
+    <form th:action="@{/createWish}" th:object="${wish}" method="post" class="wish-form">
+        <input type="text" th:field="*{name}" placeholder="Wish name" />
+        <input type="text" th:field="*{description}" placeholder="Description" />
+        <input type="number" th:field="*{price}" placeholder="Price" />
+        <input type="number" th:field="*{amount}" placeholder="Quantity" />
+        <input type="text" th:field="*{link}" placeholder="Link" />
+        <button type="submit" class="btn">Add Wish</button>
+    </form>
+    <footer class="footer">
+        <a href="/" class="btn">Return Home</a>
+    </footer>
+</div>
 </body>
 </html>

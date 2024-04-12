@@ -27,5 +27,14 @@ public class OnskeLampenService {
     public void createWish(OnskeLampen onske){
         onskeLampenRepository.createWish(onske);
     }
+    public void deleteWish(int id) {
+        onskeLampenRepository.deleteWish(id);
+    }
+    public void updateWish(OnskeLampen oenskeLampen){
+        onskeLampenRepository.updatOenske(oenskeLampen);
+    }
+    public OnskeLampen getWishById(int id) {
+        return onskeLampenRepository.getWishById(id);
+    }
 }
 
