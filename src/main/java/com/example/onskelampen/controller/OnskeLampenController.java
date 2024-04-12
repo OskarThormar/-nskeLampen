@@ -45,9 +45,25 @@ public class OnskeLampenController {
     }
 
     @PostMapping("/createWish")
-    public String createWish(@ModelAttribute OnskeLampen onske){
+    public String createWish(@ModelAttribute OnskeLampen onske) {
         onskeLampenService.createWish(onske);
         return "redirect:/";
     }
 
+    @GetMapping("{id}/delete")
+    public String deleteWish(@PathVariable int id) {
+        onskeLampenService.deleteWish(id);
+        return "redirect:/showList";
+    }
+    @GetMapping("/{id}/update")
+    public String showUpdateForm(@PathVariable int id, Model model) {
+        OnskeLampen wish = onskeLampenService.getWishById(id);
+        model.addAttribute("wish", wish);
+        return "wish-update";
+    }
+    @PostMapping("/updateWish")
+    public String updateWish(@ModelAttribute OnskeLampen updatedWish) {
+        onskeLampenService.updateWish(updatedWish);
+        return "redirect:/showList";
+    }
 }
