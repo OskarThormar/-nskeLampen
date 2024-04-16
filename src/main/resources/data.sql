@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS onskelampen;
 
-SET SCHEMA onskelampen;
+use onskelampen;
 
 drop table if exists onsker;
 CREATE TABLE onsker(

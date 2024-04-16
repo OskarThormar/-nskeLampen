@@ -10,12 +10,12 @@
     <header class="header">
         <h1>Add a New Wish</h1>
     </header>
-    <form th:action="@{/createWish}" th:object="${wish}" method="post" class="wish-form">
-        <input type="text" th:field="*{name}" placeholder="Wish name" />
-        <input type="text" th:field="*{description}" placeholder="Description" />
-        <input type="number" th:field="*{price}" placeholder="Price" />
-        <input type="number" th:field="*{amount}" placeholder="Quantity" />
-        <input type="text" th:field="*{link}" placeholder="Link" />
+    <form th:action="@{/createWish}" method="post" class="wish-form">
+        <input type="text" name="oname" placeholder="Wish name" />
+        <input type="text" name="odescription" placeholder="Description" />
+        <input type="number" name="oprice" placeholder="Price" />
+        <input type="number" name="oamount" placeholder="Quantity" />
+        <input type="text" name="olink" placeholder="Link" />
         <button type="submit" class="btn">Add Wish</button>
     </form>
     <footer class="footer">

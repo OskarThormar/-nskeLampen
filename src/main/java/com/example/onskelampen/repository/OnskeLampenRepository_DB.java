@@ -1,4 +1,3 @@
-/*
 package com.example.onskelampen.repository;
 
 import com.example.onskelampen.model.OnskeLampen;
@@ -42,5 +41,77 @@ public class OnskeLampenRepository_DB {
             throw new RuntimeException(e);
         }
     }
+
+    public OnskeLampen addWish(OnskeLampen onske) {
+        String SQL = "INSERT INTO onsker(oname,odescription,oprice,oamount,olink) VALUES (?, ?, ?, ?, ?);";
+// singleton
+        Connection con = ConnectionManager.getConnection(db_url, uid, pwd);
+        try (PreparedStatement pstmt = con.prepareStatement(SQL)) {
+            pstmt.setString(1, onske.getName());
+            pstmt.setString(2, onske.getDescription());
+            pstmt.setDouble(3, onske.getPrice());
+            pstmt.setInt(4, onske.getAmount());
+            pstmt.setString(5, onske.getLink());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return onske;
+    }
+
+    public boolean deleteWish(int id) {
+        int rows = 0; // Antal rækker der er ændret
+        String SQL = "DELETE FROM onskelampen WHERE ID = ?;";
+// singleton
+        Connection con = ConnectionManager.getConnection(db_url, uid, pwd);
+        try (PreparedStatement pstmt = con.prepareStatement(SQL)) {
+            pstmt.setInt(1, id);
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+// Returnerer true hvis en række er blevet slettet, ellers false
+        return rows == 1;
+    }
+
+    public OnskeLampen changeWish(OnskeLampen onske) {
+        int rows = 0; // antal rækker der er ændret
+        try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
+            String SQL = "UPDATE onskelampen SET oname = ?, odescription = ?, oprice = ?, oamount = ?, olink = ? WHERE ID = ? ;";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+
+            pstmt.setString(1, onske.getName());
+            pstmt.setString(2, onske.getDescription());
+            pstmt.setDouble(3, onske.getPrice());
+            pstmt.setInt(4, onske.getAmount());
+            pstmt.setString(5, onske.getLink());
+            pstmt.setInt(6, onske.getId());
+
+            rows = pstmt.executeUpdate();
+            System.out.println("Rows: " + rows);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (rows == 1) // onske fundet og opdateret
+            return onske;
+        else
+            return null;
+    }
+
+    public boolean getId() {
+        String SQL = "SELECT id FROM onsker;";
+        Connection con = ConnectionManager.getConnection(db_url, uid, pwd);
+        try (Statement statement = con.createStatement();
+             ResultSet rs = statement.executeQuery(SQL)) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                return id > 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
 }
-*/
+

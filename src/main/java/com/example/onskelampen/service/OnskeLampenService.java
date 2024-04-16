@@ -12,7 +12,7 @@ import java.util.List;
 public class OnskeLampenService {
 
     private OnskeLampenRepository onskeLampenRepository;
-    //private OnskeLampenRepository_DB onskeLampenRepository_db;
+    private OnskeLampenRepository_DB onskeLampenRepository_db;
 
     @Autowired
     public OnskeLampenService(/*OnskeLampenRepository onskeLampenRepository*/ OnskeLampenRepository_DB onskeLampenRepository_db) {
@@ -29,7 +29,9 @@ public class OnskeLampenService {
         onskeLampenRepository_db.addWish(onske);
     }
     public void deleteWish(int id) {
-        onskeLampenRepository.deleteWish(id);
+        //onskeLampenRepository.deleteWish(id);
+        onskeLampenRepository_db.deleteWish(id);
+
     }
     public void updateWish(OnskeLampen oenskeLampen){
         //onskeLampenRepository.updatOenske(oenskeLampen);
@@ -37,6 +39,7 @@ public class OnskeLampenService {
     }
     public OnskeLampen getWishById(int id) {
         return onskeLampenRepository.getWishById(id);
+        //return onskeLampenRepository_db.getId();
     }
 }
 
