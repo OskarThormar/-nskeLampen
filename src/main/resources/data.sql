@@ -1,14 +1,14 @@
 CREATE SCHEMA IF NOT EXISTS onskelampen;
 
-SET SCHEMA onskelampen;
+use onskelampen;
 
 drop table if exists onsker;
 CREATE TABLE onsker(
                        id integer auto_increment PRIMARY KEY,
                        oname varchar(100),
                        odescription varchar(100),
-                       oprice interger(255),
-                       oamount interger(255),
+                       oprice integer(255),
+                       oamount integer(255),
                        olink varchar(255)
 );
 
