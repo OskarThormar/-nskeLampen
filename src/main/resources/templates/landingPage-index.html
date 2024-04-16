@@ -2,24 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Wish</title>
+    <title>Landing Page</title>
     <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
 <div class="container">
     <header class="header">
-        <h1>Add a New Wish</h1>
+        <h1>Landing Page</h1>
     </header>
-    <form th:action="@{/createWish}" method="post" class="wish-form">
-        <input type="text" name="oname" placeholder="Wish name" />
-        <input type="text" name="odescription" placeholder="Description" />
-        <input type="number" name="oprice" placeholder="Price" />
-        <input type="number" name="oamount" placeholder="Quantity" />
-        <input type="text" name="olink" placeholder="Link" />
-        <button type="submit" class="btn">Add Wish</button>
-    </form>
     <footer class="footer">
-        <a href="/" class="btn">Return Home</a>
+        <a href="/createWish" class="btn">Add to Wishlish </a>
+        <a href="/showList" class="btn">Show Wishlist </a>
+        <a href="/updateWish" class="btn">update Wishlist </a>
     </footer>
 </div>
 </body>
