@@ -25,13 +25,15 @@ public class OnskeLampenService {
         //return onskeLampenRepository_db.showList();
     }
     public void createWish(OnskeLampen onske){
-        onskeLampenRepository.createWish(onske);
+        //onskeLampenRepository.createWish(onske);
+        onskeLampenRepository_db.addWish(onske);
     }
     public void deleteWish(int id) {
         onskeLampenRepository.deleteWish(id);
     }
     public void updateWish(OnskeLampen oenskeLampen){
-        onskeLampenRepository.updatOenske(oenskeLampen);
+        //onskeLampenRepository.updatOenske(oenskeLampen);
+        onskeLampenRepository_db.changeWish(oenskeLampen);
     }
     public OnskeLampen getWishById(int id) {
         return onskeLampenRepository.getWishById(id);
