@@ -50,7 +50,7 @@ public class OnskeLampenController {
         return "redirect:/";
     }
 
-    @GetMapping("{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteWish(@PathVariable int id) {
         onskeLampenService.deleteWish(id);
         return "redirect:/showList";

@@ -61,7 +61,7 @@ public class OnskeLampenRepository_DB {
 
     public boolean deleteWish(int id) {
         int rows = 0; // Antal rækker der er ændret
-        String SQL = "DELETE FROM onskelampen WHERE ID = ?;";
+        String SQL = "DELETE FROM onsker WHERE ID = ?;";
 // singleton
         Connection con = ConnectionManager.getConnection(db_url, uid, pwd);
         try (PreparedStatement pstmt = con.prepareStatement(SQL)) {
@@ -77,7 +77,7 @@ public class OnskeLampenRepository_DB {
     public OnskeLampen changeWish(OnskeLampen onske) {
         int rows = 0; // antal rækker der er ændret
         try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
-            String SQL = "UPDATE onskelampen SET oname = ?, odescription = ?, oprice = ?, oamount = ?, olink = ? WHERE ID = ? ;";
+            String SQL = "UPDATE onsker SET oname = ?, odescription = ?, oprice = ?, oamount = ?, olink = ? WHERE ID = ? ;";
             PreparedStatement pstmt = con.prepareStatement(SQL);
 
             pstmt.setString(1, onske.getName());
@@ -99,19 +99,27 @@ public class OnskeLampenRepository_DB {
             return null;
     }
 
-    public boolean getId() {
-        String SQL = "SELECT id FROM onsker;";
-        Connection con = ConnectionManager.getConnection(db_url, uid, pwd);
-        try (Statement statement = con.createStatement();
-             ResultSet rs = statement.executeQuery(SQL)) {
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                return id > 0;
+    public OnskeLampen getWishById(int id) {
+        String sql = "SELECT * FROM onsker WHERE id = ?";
+        OnskeLampen oenskeFind = null;
+        try (Connection connection = DriverManager.getConnection(db_url, uid, pwd);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                // Opret et nyt OnskeLampen objekt med data fra databasen
+                oenskeFind = new OnskeLampen();
+                oenskeFind.setId(resultSet.getInt("id"));
+                oenskeFind.setName(resultSet.getString("oname"));
+                oenskeFind.setDescription(resultSet.getString("odescription"));
+                oenskeFind.setPrice(resultSet.getDouble("oprice"));
+                oenskeFind.setAmount(resultSet.getInt("oamount"));
+                oenskeFind.setLink(resultSet.getString("olink"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return false;
+        return oenskeFind;
     }
 }
 

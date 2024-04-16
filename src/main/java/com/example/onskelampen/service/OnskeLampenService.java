@@ -15,7 +15,7 @@ public class OnskeLampenService {
     private OnskeLampenRepository_DB onskeLampenRepository_db;
 
     @Autowired
-    public OnskeLampenService(/*OnskeLampenRepository onskeLampenRepository*/ OnskeLampenRepository_DB onskeLampenRepository_db) {
+    public OnskeLampenService(OnskeLampenRepository onskeLampenRepository, OnskeLampenRepository_DB onskeLampenRepository_db) {
         this.onskeLampenRepository = onskeLampenRepository;
         this.onskeLampenRepository_db = onskeLampenRepository_db;
     }
