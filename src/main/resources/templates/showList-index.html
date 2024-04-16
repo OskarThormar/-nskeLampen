@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Wishlist</title>
@@ -28,21 +28,15 @@
             <td th:text="${wish.price}">Price</td>
             <td th:text="${wish.amount}">Quantity</td>
             <td><a th:href="${wish.link}" th:text="${wish.link}" target="_blank">Link</a></td>
-<!--            <td class="action-buttons">-->
-<!--                <button th:onclick="'window.location.href=\'' + @{/updateWish/{id}(id=${wish.id})} + '\''" class="btn btn-update">Update</button>-->
-<!--                <button th:onclick="'window.location.href=\'' + @{/deleteWish/{id}(id=${wish.id})} + '\''" class="btn btn-delete">Delete</button>-->
-<!--            </td>-->
             <td>
-                <form style="display: inline-block;" th:action="@{/delete/{id}(id=${wish.id})}"  method="get">
+                <!-- Link to the update page with wish ID embedded in URL -->
+                <form style="display: inline-block;" th:action="@{${wish.id} + '/update'}" method="get">
                     <input type="hidden" name="id" th:value="${wish.id}" />
                     <button type="submit">Delete</button>
                 </form>
-            </td>
-            <td>
-                <form style="display: inline-block;" th:action="@{/update/{id}(id=${wish.id})}" method="get">
-                    <input type="hidden" name="id" th:value="${wish.id}" />
-                    <button type="submit">Update</button>
-                </form>
+                <a th:href="@{${wish.id} + '/delete'}" >Delete</a>
+
+
             </td>
         </tr>
         </tbody>

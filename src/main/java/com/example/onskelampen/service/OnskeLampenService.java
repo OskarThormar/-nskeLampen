@@ -38,8 +38,8 @@ public class OnskeLampenService {
         onskeLampenRepository_db.changeWish(oenskeLampen);
     }
     public OnskeLampen getWishById(int id) {
-        return onskeLampenRepository.getWishById(id);
-        //return onskeLampenRepository_db.getId();
+        //return onskeLampenRepository.getWishById(id);
+        return onskeLampenRepository_db.getWishById(id);
     }
 }
 
