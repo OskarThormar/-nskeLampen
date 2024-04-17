@@ -13,7 +13,7 @@
   <input type="hidden" th:field="*{id}" /> <!-- Skjult input til id -->
 
   <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" th:value="*{name}" /><br> <!-- Input til navn med værdi fra ønsket -->
+  <input type="text" id="name" name="name" th:value="*{name}" required/><br> <!-- Input til navn med værdi fra ønsket -->
 
   <label for="description">Description:</label><br>
   <input type="text" id="description" name="description" th:value="*{description}" /><br> <!-- Input til beskrivelse med værdi fra ønsket -->
