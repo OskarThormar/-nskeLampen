@@ -65,9 +65,4 @@ public class OnskeLampenController {
         onskeLampenService.updateWish(updatedWish);
         return "redirect:/showList";
     }
-
-    @GetMapping("/createwish")
-    public String  addWishError(){
-        return "wish-add-error";
-    }
 }
