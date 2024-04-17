@@ -5,6 +5,9 @@ import com.example.onskelampen.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -20,7 +23,11 @@ public class UserService {
     public boolean validate(String userName, String password) {
         return userRepository.validateUser(userName, password);
     }
-    public boolean register(User user) {
-        return userRepository.registerUser(user);
+    public boolean register(User newUser) {
+        return userRepository.registerUser(newUser);
+    }
+
+    public ArrayList<User> getAllUsers() {
+        return userRepository.getAllUsers();
     }
 }

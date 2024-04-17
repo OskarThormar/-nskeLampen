@@ -88,7 +88,6 @@ public class OnskeLampenRepository_DB {
             pstmt.setInt(6, onske.getId());
 
             rows = pstmt.executeUpdate();
-            System.out.println("Rows: " + rows);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

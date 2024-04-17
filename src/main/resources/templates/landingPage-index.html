@@ -11,7 +11,6 @@
         <h1>Welcome to Your Wishlist Manager</h1>
     </header>
 
-    <!-- Display buttons based on user's login status -->
     <footer class="footer">
         <div th:if="${#ctx.session.isLoggedIn != null}">
             <!-- Display when user is logged in -->
@@ -21,13 +20,11 @@
             <a href="/user/logout" class="btn">Logout</a>
         </div>
         <div th:unless="${#ctx.session.isLoggedIn != null}">
-            <!-- Display when no user is logged in -->
             <a href="/user/login" class="btn">Login</a>
             <a href="/user/register" class="btn">Register</a>
         </div>
     </footer>
 
-    <!-- Display current user if logged in -->
     <footer class="footer">
         <h2>Current User:</h2>
         <p th:if="${#ctx.session.isLoggedIn != null}" th:text="'Logged in as ' + ${#ctx.session.username}"></p>

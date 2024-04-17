@@ -36,7 +36,8 @@ public class OnskeLampenUserController {
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("userForm") User userForm, Model model, RedirectAttributes redirectAttributes) {
         // Try to register the user (add your registration logic here)
-        boolean isRegistered = userService.register(user);
+        boolean isRegistered = userService.register(userForm);
+
         if (isRegistered) {
             redirectAttributes.addFlashAttribute("success", "Registration successful!");
             return "redirect:/user/login"; // Redirect to login page after successful registration
@@ -46,19 +47,10 @@ public class OnskeLampenUserController {
         }
     }
 
-
-
-    // returner form
     @GetMapping("/login")
     public String login() {
         return "login";
     }
-//    @GetMapping("/result")
-//    public String result(Model model) {
-//        model.addAttribute("username", user.getUserName());
-//        model.addAttribute("password", user.getPassword());
-//        return "login-result";
-//    }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
@@ -69,25 +61,6 @@ public class OnskeLampenUserController {
         return "redirect:/";
     }
 
-//    @PostMapping("/login")
-//    public String login(@RequestParam("username") String userName,
-//                        @RequestParam("password") String password,
-//                        HttpSession session) {
-//        // Perform login authentication logic here
-//        boolean isAuthenticated = userService.authenticate(userName, password);
-//
-//        if (isAuthenticated) {
-//            // Store user information in session
-//            session.setAttribute("username", userName);
-//            session.setAttribute("isLoggedIn", true);
-//
-//            // Redirect to the landing page or any other secured page
-//            return "redirect:/";
-//        } else {
-//            // If authentication fails, redirect back to login page with error message
-//            return "redirect:/user/login?error=true";
-//        }
-//    }
     @PostMapping("/login")
     public String login(@RequestParam("username") String userName,
                         @RequestParam("password") String password,
@@ -97,8 +70,13 @@ public class OnskeLampenUserController {
             session.setAttribute("username", userName);
             return "redirect:/";
         } else {
-            return "redirect:/user/login?error=true";
+            return "redirect:/user/login/error";
         }
+    }
+
+    @GetMapping("/user/login/error")
+    public String error() {
+        return "login-error";
     }
 
     @GetMapping("/result")
