@@ -5,7 +5,6 @@ import com.example.onskelampen.service.OnskeLampenService;
 import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,5 +64,10 @@ public class OnskeLampenController {
     public String updateWish(@ModelAttribute OnskeLampen updatedWish) {
         onskeLampenService.updateWish(updatedWish);
         return "redirect:/showList";
+    }
+
+    @GetMapping("/createwish")
+    public String  addWishError(){
+        return "wish-add-error";
     }
 }
