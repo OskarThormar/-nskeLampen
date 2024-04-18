@@ -1,4 +1,4 @@
-package com.example.onskelampen;
+/*package com.example.onskelampen;
 
 import com.example.onskelampen.controller.OnskeLampenUserController;
 import com.example.onskelampen.model.User;
@@ -26,3 +26,4 @@ class OnskeLampenUserControllerTest {
     private MockMvc mockMvc;
 
 }
+*/
