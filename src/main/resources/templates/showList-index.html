@@ -32,9 +32,9 @@
                 <!-- Link to the update page with wish ID embedded in URL -->
                 <form style="display: inline-block;" th:action="@{${wish.id} + '/update'}" method="get">
                     <input type="hidden" name="id" th:value="${wish.id}" />
-                    <button type="submit">Update</button>
+                    <button type="submit" class="btn btn-update">Update</button>
                 </form>
-                <a th:href="@{${wish.id} + '/delete'}" >Delete</a>
+                <a th:href="@{${wish.id} + '/delete'}" class="btn btn-delete" >Delete</a>
 
 
             </td>

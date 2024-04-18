@@ -7,6 +7,7 @@ import com.example.onskelampen.service.OnskeLampenService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import jakarta.servlet.http.HttpSession;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -40,7 +41,7 @@ class OnskeLampenControllerTest {
 
     @Test
     void showList() {
-        Model model = mock(Model.class);
+        Model model = mock(Model.class HttpSession.class);
         List<OnskeLampen> wishList = new ArrayList<>();
         when(onskeLampenService.showList()).thenReturn(wishList);
 
