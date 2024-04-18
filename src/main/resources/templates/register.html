@@ -21,6 +21,7 @@
 
 
     <form th:action="@{/user/register}" th:method="post" th:object="${userForm}">
+
     <label for="userName">User Name:</label>
     <input type="text" id="userName" th:field="*{userName}" required>
 

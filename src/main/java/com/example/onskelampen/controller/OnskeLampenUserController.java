@@ -4,7 +4,6 @@ import com.example.onskelampen.model.User;
 import com.example.onskelampen.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -64,36 +63,28 @@ public class OnskeLampenUserController {
     @PostMapping("/login")
     public String login(@RequestParam("username") String userName,
                         @RequestParam("password") String password,
-                        HttpSession session) {
-        if (userService.validate(userName, password)) {
+                        HttpSession session,
+                        RedirectAttributes redirectAttributes) {
+        if (userService.loginUser(userName, password)) {
             session.setAttribute("isLoggedIn", true);
             session.setAttribute("username", userName);
+            session.setAttribute("userid", userService.findUserId(userName));
             return "redirect:/";
         } else {
-            return "redirect:/user/login/error";
+            redirectAttributes.addAttribute("error", true);
+            return "redirect:/user/login";
         }
     }
 
-    @GetMapping("/user/login/error")
-    public String error() {
-        return "login-error";
-    }
 
     @GetMapping("/result")
     public String result(HttpSession session, Model model) {
-        // Check if the user is logged in by looking for a session attribute
         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
         if (Boolean.TRUE.equals(isLoggedIn)) {
-            // Retrieve user information from the session
             String username = (String) session.getAttribute("username");
-
-            // Add user information to the model to display on the result page
             model.addAttribute("username", username);
-
-            // Display the result page with user details
             return "login-result";
         } else {
-            // If not logged in, redirect to the login page
             return "redirect:/user/login";
         }
     }

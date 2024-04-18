@@ -11,6 +11,7 @@
         <h1>Add a New Wish</h1>
     </header>
     <form th:action="@{/createWish}" method="post" th:object="${wish}">
+        <input type="hidden" name="userid" th:value="${#ctx.session.userid}"/>
         <input type="text" name="name" th:field="*{name}" required/>
         <input type="text" name="description" th:field="*{description}"/>
         <input type="number" name="price" th:field="*{price}"/>

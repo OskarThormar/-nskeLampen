@@ -13,10 +13,8 @@
 
     <footer class="footer">
         <div th:if="${#ctx.session.isLoggedIn != null}">
-            <!-- Display when user is logged in -->
             <a href="/createWish" class="btn">Add to Wishlist</a>
             <a href="/showList" class="btn">Show Wishlist</a>
-            <a href="/updateWish" class="btn">Update Wishlist</a>
             <a href="/user/logout" class="btn">Logout</a>
         </div>
         <div th:unless="${#ctx.session.isLoggedIn != null}">

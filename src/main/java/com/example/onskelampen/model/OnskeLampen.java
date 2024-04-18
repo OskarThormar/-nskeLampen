@@ -10,18 +10,20 @@ public class OnskeLampen {
     private double price;
     private int amount;
     private String link;
+    private int userid;
 
     public OnskeLampen() {
 
     }
 
-    public OnskeLampen(int id, String name, String description, double price, int amount, String link) {
+    public OnskeLampen(int id, String name, String description, double price, int amount, String link, int userid) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.amount = amount;
         this.link = link;
+        this.userid = userid;
     }
 
     public int getId() {
@@ -72,6 +74,14 @@ public class OnskeLampen {
         this.link = link;
     }
 
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,5 +92,17 @@ public class OnskeLampen {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getName(), getDescription(), getPrice(), getAmount(), getLink());
+    }
+
+    @Override
+    public String toString() {
+        return "OnskeLampen{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", amount=" + amount +
+                ", link='" + link + '\'' +
+                '}';
     }
 }

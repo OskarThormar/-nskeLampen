@@ -15,8 +15,8 @@ public class OnskeLampenRepository {
     public OnskeLampenRepository() {
         onskeId = 1;
         this.onskeLampensList = new ArrayList<>();
-        onskeLampensList.add(new OnskeLampen(1, "computer", "til at spille spil", 8000, 1, "computersalg"));
-        onskeLampensList.add(new OnskeLampen(2, "bil", "mobilitet", 48000, 1, "citroen"));
+        onskeLampensList.add(new OnskeLampen(1, "computer", "til at spille spil", 8000, 1, "computersalg", 2));
+        onskeLampensList.add(new OnskeLampen(2, "bil", "mobilitet", 48000, 1, "citroen", 1));
     }
 
     private int getOnskeId() {

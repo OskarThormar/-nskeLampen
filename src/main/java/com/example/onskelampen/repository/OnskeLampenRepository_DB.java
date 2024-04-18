@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -19,31 +18,33 @@ public class OnskeLampenRepository_DB {
     @Value("${spring.datasource.password}")
     String pwd;
 
-    public List<OnskeLampen> showList() {
-        List<OnskeLampen> onsker = new ArrayList<OnskeLampen>();
-        String SQL = "SELECT * FROM onsker;";
-// singleton
+    public List<OnskeLampen> showList(int userid) {
+        List<OnskeLampen> onsker = new ArrayList<>();
+        String SQL = "SELECT * FROM onsker WHERE userid = ?";
+        // singleton
         Connection con = ConnectionManager.getConnection(db_url, uid, pwd);
-        try (Statement stmt = con.createStatement();
-// ikke nødvendig i try, da stmt.close også lukker Resultset
-             ResultSet rs = stmt.executeQuery(SQL)) {
-            while (rs.next()) {
-                int ID = rs.getInt("id");
-                String name = rs.getString("oname");
-                String description = rs.getString("odescription");
-                int price = rs.getInt("oprice");
-                int amount = rs.getInt("oamount");
-                String link = rs.getString("olink");
-                onsker.add(new OnskeLampen(ID, name, description, price, amount, link));
+        try (PreparedStatement pstmt = con.prepareStatement(SQL)) {
+            pstmt.setInt(1, userid);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int ID = rs.getInt("id");
+                    String name = rs.getString("oname");
+                    String description = rs.getString("odescription");
+                    int price = rs.getInt("oprice");
+                    int amount = rs.getInt("oamount");
+                    String link = rs.getString("olink");
+                    onsker.add(new OnskeLampen(ID, name, description, price, amount, link, userid));
+                }
+                return onsker;
             }
-            return onsker;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public OnskeLampen addWish(OnskeLampen onske) {
-        String SQL = "INSERT INTO onsker(oname,odescription,oprice,oamount,olink) VALUES (?, ?, ?, ?, ?);";
+
+    public OnskeLampen addWish(OnskeLampen onske, int userid) {
+        String SQL = "INSERT INTO onsker(oname,odescription,oprice,oamount,olink,userid) VALUES (?, ?, ?, ?, ?, ?);";
 // singleton
         Connection con = ConnectionManager.getConnection(db_url, uid, pwd);
         try (PreparedStatement pstmt = con.prepareStatement(SQL)) {
@@ -52,6 +53,7 @@ public class OnskeLampenRepository_DB {
             pstmt.setDouble(3, onske.getPrice());
             pstmt.setInt(4, onske.getAmount());
             pstmt.setString(5, onske.getLink());
+            pstmt.setInt(6, userid);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
