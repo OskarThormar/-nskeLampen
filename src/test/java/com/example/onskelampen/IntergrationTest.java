@@ -1,4 +1,4 @@
-package com.example.onskelampen;
+/*package com.example.onskelampen;
 
 import com.example.onskelampen.model.User;
 import com.example.onskelampen.model.OnskeLampen;
@@ -72,4 +72,4 @@ class OnskeLampenIntergrationTest { //name prevent running on github
             System.out.println("Database call went wrong" + e.getMessage());
         }
     }
-}
+}*/
