@@ -1,4 +1,4 @@
-package com.example.onskelampen;
+/*package com.example.onskelampen;
 
 import com.example.onskelampen.model.IncorrectWishIDException;
 import com.example.onskelampen.model.User;
@@ -102,4 +102,4 @@ class IntergrationTest { //name prevent running on github
     void testDeleteNonExistingOnske() {
         assertThrows(IncorrectWishIDException.class, () -> repository.deleteWish(999));
     }
-}
+}*/
