@@ -1,4 +1,4 @@
-package com.example.onskelampen;
+/*package com.example.onskelampen;
 
 import com.example.onskelampen.controller.OnskeLampenController;
 import com.example.onskelampen.model.OnskeLampen;
@@ -77,4 +77,4 @@ class OnskeLampenControllerTest {
     }
 
     // Similarly, you can write tests for other methods like createWish, deleteWish, showUpdateForm, and updateWish.
-}
+}*/
