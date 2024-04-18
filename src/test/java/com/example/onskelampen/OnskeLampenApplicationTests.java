@@ -41,7 +41,7 @@
 //
 //    @Test
 //    void showList() {
-//        Model model = mock(Model.class HttpSession.class);
+//        Model model = mock(Model.class);
 //        List<OnskeLampen> wishList = new ArrayList<>();
 //        when(onskeLampenService.showList()).thenReturn(wishList);
 //
